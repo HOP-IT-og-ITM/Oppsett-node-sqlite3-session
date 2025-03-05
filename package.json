@@ -1,0 +1,22 @@
+{
+  "name": "klokke",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch app.js"
+  },
+  "author": "Legg inn ditt navn her!",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "sqlite3": "^5.1.7",
+    "tsc": "^2.0.4",
+    "websocket": "^1.0.35",
+    "ws": "^8.18.1"
+  }
+}

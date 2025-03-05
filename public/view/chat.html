@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Din tittel her</title>
+        <script src="/script/live-reload.js"></script>
+        <link rel="stylesheet" href="/style/style.css" />
+
+  <script src="script/get-comments.js">
+    
+  </script>
+</head>
+<body>
+<h2>Alle kommentarer</h2>
+  <ul id="commentList"></ul>
+  <h1>Kommentarer</h1>
+  <!-- Skjema for å legge til ny kommentar -->
+  <form onsubmit="submitComment(event)">
+    <textarea id="Kommentar" required placeholder="Skriv din kommentar her..."></textarea>
+    <br>
+    <button type="submit">Legg til kommentar</button>
+  </form>
+  
+  <p><a href="/logout">Logg ut</a></p>
+</body>
+</html>

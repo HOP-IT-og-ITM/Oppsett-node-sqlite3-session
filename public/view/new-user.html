@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Din tittel her</title>
+        <script src="/script/live-reload.js"></script>
+        <link rel="stylesheet" href="/style/style.css" />
+        <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    </head>
+    <body>
+        <h1>Registrer ny bruker</h1>
+        <!-- Skjema for å opprette en ny bruker -->
+        <form action="/api/bruker" method="POST">
+            <label for="Navn">Brukernavn:</label>
+            <input type="text" id="Navn" name="Navn" required />
+            <br />
+            <label for="Passord">Passord:</label>
+            <input type="password" id="Passord" name="Passord" required />
+            <br />
+            <button type="submit">Registrer</button>
+        </form>
+        <p>Har du allerede en konto? <a href="/login">Logg inn her</a></p>
+    </body>
+</html>
