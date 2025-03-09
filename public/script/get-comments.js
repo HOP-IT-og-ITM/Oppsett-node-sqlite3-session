@@ -31,5 +31,5 @@ async function submitComment(event) {
 // Hent kommentarer ved lasting av siden og oppdater med jevne mellomrom
 window.onload = () => {
     fetchComments();
-    setInterval(fetchComments, 5000);
+    setInterval(fetchComments, 500);
 };

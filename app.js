@@ -1,5 +1,7 @@
-const { app, server, port, db, isAuthenticated, bcrypt } = require("./server"); // Modul med alt server-oppsettet som ikke endres i programmet
-const path = require("path"); // Modul for å håndtere fil- og katalogstier
+// Modul med alt server-oppsettet som ikke endres i programmet
+const { app, server, port, db, isAuthenticated, bcrypt } = require("./server"); 
+// Modul for å håndtere fil- og katalogstier
+const path = require("path"); 
 
 // Rot-rute: Sender brukeren til riktig side basert på om de er logget inn
 app.get("/", isAuthenticated, (req, res) => {
@@ -44,14 +46,14 @@ app.get("/api/kommentar", isAuthenticated, (req, res) => {
 
 // Rute for å logge inn. Sammenligner oppgitt passord med hash i databasen.
 app.post("/login", (req, res) => {
-    const { Navn, Passord } = req.body;
+    const { Brukernavn, Passord } = req.body;
 
-    if (!Navn || !Passord) {
-        return res.status(400).send("Manglende Navn eller Passord");
+    if (!Brukernavn || !Passord) {
+        return res.status(400).send("Manglende Brukernavn eller Passord");
     }
 
-    const sql = "SELECT * FROM BRUKER WHERE Navn = ?";
-    db.get(sql, [Navn], async (err, row) => {
+    const sql = "SELECT * FROM BRUKER WHERE Brukernavn = ?";
+    db.get(sql, [Brukernavn], async (err, row) => {
         if (err) {
             console.error(err.message);
             return res.status(500).send("Intern serverfeil");
@@ -67,26 +69,26 @@ app.post("/login", (req, res) => {
 
 /*
   API-endepunkt for registrering av ny bruker.
-  Forventer data med feltene "Navn" og "Passord".
+  Forventer data med feltene "Brukernavn" og "Passord".
   Passordet blir hashet før lagring.
 */
 app.post("/api/bruker", async (req, res) => {
-    const { Navn, Passord } = req.body;
+    const { Brukernavn, Passord } = req.body;
 
-    if (!Navn || !Passord) {
-        return res.status(400).json({ error: "Manglende Navn eller Passord" });
+    if (!Brukernavn || !Passord) {
+        return res.status(400).json({ error: "Manglende Brukernavn eller Passord" });
     }
 
     try {
         const hashedPassword = await bcrypt.hash(Passord, 10);
-        const sql = `INSERT INTO BRUKER (Navn, Passord) VALUES (?, ?)`;
+        const sql = `INSERT INTO BRUKER (Brukernavn, Passord) VALUES (?, ?)`;
 
-        db.run(sql, [Navn, hashedPassword], function (err) {
+        db.run(sql, [Brukernavn, hashedPassword], function (err) {
             if (err) {
                 console.error("Feil ved innsetting av bruker:", err.message);
                 return res.status(500).json({ error: err.message });
             }
-            // Returner den nye brukerens ID og Navn
+            // Returner den nye brukerens ID og Brukernavn
             res.redirect("/");
         });
     } catch (err) {
