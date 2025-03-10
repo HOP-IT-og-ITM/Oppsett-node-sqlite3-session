@@ -50,21 +50,23 @@ const db = new sqlite3.Database("chatDatabase.db", (err) => {
 
         // Opprett tabell for brukere dersom den ikke allerede finnes
         db.run(
-        `CREATE TABLE IF NOT EXISTS Bruker (
+            `CREATE TABLE IF NOT EXISTS Bruker (
         ID_bruker INTEGER PRIMARY KEY,
         Brukernavn TEXT,
         Passord TEXT
-        )`);
+        )`
+        );
 
         // Opprett tabell for kommentarer med fremmednøkkel til Bruker dersom den ikke allerede finnes
         db.run(
-        `CREATE TABLE IF NOT EXISTS Kommentar (
+            `CREATE TABLE IF NOT EXISTS Kommentar (
         ID_kommentar INTEGER PRIMARY KEY,
         ID_bruker INTEGER,
         Kommentar TEXT,
         Tidspunkt TEXT,
         FOREIGN KEY (ID_bruker) REFERENCES Bruker(ID_bruker)
-        )`);
+        )`
+        );
     }
 });
 

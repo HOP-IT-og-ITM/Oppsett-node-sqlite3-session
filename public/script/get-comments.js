@@ -5,9 +5,20 @@ async function fetchComments() {
     const commentList = document.getElementById("commentList");
     commentList.innerHTML = "";
     comments.forEach((comment) => {
-        const li = document.createElement("li");
-        li.textContent = `${comment.Tidspunkt} - Bruker ID ${comment.ID_bruker}: ${comment.Kommentar}`;
-        commentList.appendChild(li);
+        //Lager div-strukturen for en kommentar
+        const commentListItem = document.createElement("div");
+        const commentListInformation = document.createElement("div");
+        const commentListContent = document.createElement("div");
+        commentListItem.appendChild(commentListInformation);
+        commentListItem.appendChild(commentListContent);
+        commentList.appendChild(commentListItem);
+        //Gir div-elementene klassenavn:
+        commentListItem.className = "comment";
+        commentListInformation.className = "commentInfo";
+        commentListContent.className = "commentContent";
+        //Fyller inn innhold i kommentaren (tidspunkt + id_bruker og kommentar)
+        commentListInformation.textContent = `${comment.Tidspunkt} - Bruker ID ${comment.ID_bruker}:`;
+        commentListContent.textContent = `${comment.Kommentar}`;
     });
 }
 
@@ -31,5 +42,5 @@ async function submitComment(event) {
 // Hent kommentarer ved lasting av siden og oppdater med jevne mellomrom
 window.onload = () => {
     fetchComments();
-    setInterval(fetchComments, 500);
+    setInterval(fetchComments, 1000);
 };

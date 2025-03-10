@@ -1,7 +1,7 @@
 // Modul med alt server-oppsettet som ikke endres i programmet
-const { app, server, port, db, isAuthenticated, bcrypt } = require("./server"); 
+const { app, server, port, db, isAuthenticated, bcrypt } = require("./server");
 // Modul for å håndtere fil- og katalogstier
-const path = require("path"); 
+const path = require("path");
 
 // Rot-rute: Sender brukeren til riktig side basert på om de er logget inn
 app.get("/", isAuthenticated, (req, res) => {
@@ -26,7 +26,7 @@ app.get("/kommentar", (req, res) => {
 // Rute for å logge ut og ødelegge session
 app.get("/logout", (req, res) => {
     req.session.destroy();
-    res.clearCookie('connect.sid')
+    res.clearCookie("connect.sid");
     res.redirect("/");
 });
 
@@ -76,7 +76,9 @@ app.post("/api/bruker", async (req, res) => {
     const { Brukernavn, Passord } = req.body;
 
     if (!Brukernavn || !Passord) {
-        return res.status(400).json({ error: "Manglende Brukernavn eller Passord" });
+        return res
+            .status(400)
+            .json({ error: "Manglende Brukernavn eller Passord" });
     }
 
     try {

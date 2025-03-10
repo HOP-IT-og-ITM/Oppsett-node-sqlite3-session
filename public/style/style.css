@@ -5,8 +5,24 @@
     box-sizing: border-box;
 }
 
-
 /* Din CSS-kode under her */
 
+/*
+Elementet kommentar er bygget opp med 1 parent "comment",
+og 2 children "commentInfo" og "commentContent".
 
+"comment" er child til "commentList" id-en.
+*/
 
+.commentList {
+    /* Parent til comment */
+}
+.comment {
+    /* Parent til commentInfo og commentContent */
+}
+.commentInfo {
+    /* Child av comment */
+}
+.commentContent {
+    /* Child av comment */
+}
