@@ -1,18 +1,16 @@
 /* CSS Reset */
-* {
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 /* Din CSS-kode under her */
-
-/*
-Elementet kommentar er bygget opp med 1 parent "comment",
-og 2 children "commentInfo" og "commentContent".
-
-"comment" er child til "commentList" id-en.
-*/
 
 .commentList {
     /* Parent til comment */
