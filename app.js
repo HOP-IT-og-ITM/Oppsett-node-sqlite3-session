@@ -5,22 +5,22 @@ const path = require("path");
 
 // Rot-rute: Sender brukeren til riktig side basert på om de er logget inn
 app.get("/", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "chat.html"));
+    res.sendFile(path.join(__dirname, "view", "chat.html"));
 });
 
 // Rute for å serve login-siden
 app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "login.html"));
+    res.sendFile(path.join(__dirname, "view", "login.html"));
 });
 
 // Rute for å serve registreringssiden (opprett bruker)
 app.get("/opprett-bruker", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "new-user.html"));
+    res.sendFile(path.join(__dirname, "view", "new-user.html"));
 });
 
 // Rute for å serve kommentar-siden
 app.get("/kommentar", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "chat.html"));
+    res.sendFile(path.join(__dirname, "view", "chat.html"));
 });
 
 // Rute for å logge ut og ødelegge session
